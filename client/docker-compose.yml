@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  client:
+    # env_file:
+    #   "./client/.env"
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    # image: "react-express-docker-demo/client"
+    ports:
+      - "3000:3000"
+    # links:
+    #   - "backend:be"
+  server:
+    # env_file:
+    #   "./server/.env"
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    # image: "react-express-docker-demo/server"
+    ports:
+      - "5000:5000"
+    links:
+      - "client:client"
